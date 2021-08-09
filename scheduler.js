@@ -1,6 +1,10 @@
 require('dotenv').config()
 var CronJob = require('cron').CronJob;
 const twilio = require('twilio')
+const express = require('express')
+
+const app = express()
+
 const fs = require('fs')
 const MESSAGES = JSON.parse(fs.readFileSync('./messages.json', 'utf8'))
 const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER
@@ -60,3 +64,7 @@ MESSAGES.map((message) => {
     }, null, true, 'Canada/Eastern');
     job.start();
 })
+
+// Start server
+const PORT = process.env.PORT || 5000
+app.listen(PORT, console.log(`Server running on port ${PORT}`))
