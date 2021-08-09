@@ -23,7 +23,7 @@ MESSAGES.map((message) => {
         client.messages
           .create({
             body: message.body,
-            to: message.phoneNumber, // Text this number
+            to: process.env[message.phoneNumberCode], // Text this number
             from: TWILIO_PHONE_NUMBER, // From a valid Twilio number
           })
           .then(() => console.log('sent'))
@@ -54,7 +54,7 @@ MESSAGES.map((message) => {
                 client.messages
                 .create({
                   body: message.body,
-                  to: message.phoneNumber, // Text this number
+                  to: process.env[message.phoneNumberCode], // Text this number
                   from: TWILIO_PHONE_NUMBER, // From a valid Twilio number
                 })
                 .then(() => console.log('sent'))
