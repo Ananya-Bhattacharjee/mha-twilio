@@ -1,0 +1,8 @@
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
+messages.json
+/error-logs.txt
+/create.js
+/cron.js

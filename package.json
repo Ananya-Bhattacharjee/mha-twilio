@@ -1,0 +1,24 @@
+{
+  "name": "mha-twillio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scheduler.js",
+  "scripts": {
+    "start": "node scheduler.js",
+    "dev": "nodemon scheduler.js"
+  },
+  "keywords": [],
+  "author": "Faizah Sayyid",
+  "license": "ISC",
+  "dependencies": {
+    "cron": "^1.8.2",
+    "dotenv": "^10.0.0",
+    "twilio": "^3.66.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "engines": {
+    "node": "v14.15.4"
+  }
+}
