@@ -4,5 +4,3 @@ npm-debug.log
 /*.env
 messages.json
 /error-logs.txt
-/create.js
-/cron.js
