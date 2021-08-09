@@ -2,9 +2,7 @@ require('dotenv').config()
 var CronJob = require('cron').CronJob;
 const twilio = require('twilio')
 const fs = require('fs')
-
-const ERROR_LOGS = process.env.ERROR_LOGS;
-const MESSAGES = JSON.parse(fs.readFileSync(process.env.MESSAGES, 'utf8'))
+const MESSAGES = JSON.parse(fs.readFileSync('./messages.json', 'utf8'))
 const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER
 
 const ACCOUNT_SID = process.env.ACCOUNT_SID;
@@ -27,11 +25,6 @@ MESSAGES.map((message) => {
             from: TWILIO_PHONE_NUMBER, // From a valid Twilio number
           })
           .then(() => console.log('sent'))
-          .catch((error) => {
-            // If there is an error, log it to error log file (txt)
-            fs.appendFile(ERROR_LOGS, error, () => {})
-            fs.appendFile(ERROR_LOGS,'\n', () => {})
-          })
       } 
       
       // If this is the third message in the protocol, we want to check if a rating message 
@@ -58,19 +51,9 @@ MESSAGES.map((message) => {
                   from: TWILIO_PHONE_NUMBER, // From a valid Twilio number
                 })
                 .then(() => console.log('sent'))
-                .catch((error) => {
-                  // If there is an error, log it to error log file (txt)
-                  fs.appendFile(ERROR_LOGS, error, () => {})
-                  fs.appendFile(ERROR_LOGS,'\n', () => {})
-                })
               }
             }
           )
-          .catch((error) => {
-            // If there is an error, log it to error log file (txt)
-            fs.appendFile(ERROR_LOGS, error, () => {})
-            fs.appendFile(ERROR_LOGS,'\n', () => {})
-          })
       }
       // Makes sure cron job only runs once
       this.stop()
