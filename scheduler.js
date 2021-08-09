@@ -18,7 +18,7 @@ const client = new twilio(ACCOUNT_SID, AUTH_TOKEN);
 MESSAGES.map((message) => {
     // Create new Cron Job at specified time 
     const job = new CronJob(message.cronTime, function() {
-        
+      console.log('Starting Job')
       // If this is the first or second message in the protocol (not the reminder or assumption)
       // Simply send the message
       if (!message.isReminderOrAssumption) {
