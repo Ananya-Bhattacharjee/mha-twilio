@@ -1,107 +1,86 @@
 [
     {
-        "cronTime": "0 15 8 9 7 *", 
+        "cronTime": "0 0 14 10 7 *", 
         "phoneNumberCode": "PARTICIPANT_1",
         "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": false,
         "body": "PROTOCOL MESSAGE 1: Purple is the best colour! (do not reply)"
     },
     {
-        "cronTime": "0 0 9 9 7 *", 
+        "cronTime": "0 0 15 10 7 *", 
         "phoneNumberCode": "PARTICIPANT_1",
         "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
-        "isReminderOrAssumption": false,
-        "body": "PROTOCOL MESSAGE 2: REPLY TO THIS MESSAGE!!! You should NOT receive a message at 9:45 AM EST"
-    },
-    {
-        "cronTime": "0 45 9 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_1",
-        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
-        "isReminderOrAssumption": true,
-        "body": "PROTOCOL MESSAGE 3: Reminder message!! You should not have received this. Please make note to let Faizah know that you received this message"
-    },
-    {
-        "cronTime": "0 0 15 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_1",
-        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
-        "isReminderOrAssumption": false,
-        "body": "PROTOCOL MESSAGE 1: Purple is the best colour! (do not reply)"
-    },
-    {
-        "cronTime": "0 0 16 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_1",
-        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
-        "isReminderOrAssumption": false,
-        "body": "PROTOCOL MESSAGE 2: DO NOT REPLY!!! You should receive a message at 4:45 PM EST"
-    },
-    {
-        "cronTime": "0 45 16 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_1",
-        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
-        "isReminderOrAssumption": true,
-        "body": "PROTOCOL MESSAGE 3: Reminder message!!"
-    },
-    {
-        "cronTime": "0 0 14 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_2",
-        "channelSID": "CHba5223e4c02c40c9b9767179a98454bb",
-        "isReminderOrAssumption": false,
-        "body": "PROTOCOL MESSAGE 1: Hey! Hope your having a nice day :) (do not reply)"
-    },
-    {
-        "cronTime": "0 0 15 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_2",
-        "channelSID": "CHba5223e4c02c40c9b9767179a98454bb",
         "isReminderOrAssumption": false,
         "body": "PROTOCOL MESSAGE 2: REPLY TO THIS MESSAGE!!! You should NOT receive a message at 3:45 PM EST"
     },
     {
-        "cronTime": "0 45 15 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_2",
-        "channelSID": "CHba5223e4c02c40c9b9767179a98454bb",
+        "cronTime": "0 45 15 10 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": true,
         "body": "PROTOCOL MESSAGE 3: Reminder message!! You should not have received this. Please make note to let Faizah know that you received this message"
     },
     {
-        "cronTime": "0 0 16 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_2",
-        "channelSID": "CHba5223e4c02c40c9b9767179a98454bb",
+        "cronTime": "0 0 16 10 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": false,
-        "body": "PROTOCOL MESSAGE 1: What is life? (do not reply)"
+        "body": "PROTOCOL MESSAGE 1: Purple is the best colour! (do not reply)"
     },
     {
-        "cronTime": "0 0 17 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_2",
-        "channelSID": "CHba5223e4c02c40c9b9767179a98454bb",
+        "cronTime": "0 0 17 10 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": false,
         "body": "PROTOCOL MESSAGE 2: DO NOT REPLY!!! You should receive a message at 5:45 PM EST"
     },
     {
-        "cronTime": "0 45 17 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_2",
-        "channelSID": "CHba5223e4c02c40c9b9767179a98454bb",
+        "cronTime": "0 45 17 10 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": true,
         "body": "PROTOCOL MESSAGE 3: Reminder message!!"
     },
     {
-        "cronTime": "0 0 13 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_3",
-        "channelSID": "CH96b05b2b5f984407902c183aae77e007",
+        "cronTime": "0 0 18 10 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": false,
-        "body": "PROTOCOL MESSAGE 1: Hey! Hope your having a nice day :) (do not reply)"
+        "body": "PROTOCOL MESSAGE 1: Purple is the best colour! (do not reply)"
     },
     {
-        "cronTime": "0 0 14 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_3",
-        "channelSID": "CH96b05b2b5f984407902c183aae77e007",
+        "cronTime": "0 0 19 10 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": false,
-        "body": "PROTOCOL MESSAGE 2: REPLY TO THIS MESSAGE!!! You should NOT receive a message at 2:45 PM EST"
+        "body": "PROTOCOL MESSAGE 2: REPLY TO THIS MESSAGE!!! You should NOT receive a message at 7:45 PM EST"
     },
     {
-        "cronTime": "0 45 14 9 7 *", 
-        "phoneNumberCode": "PARTICIPANT_3",
-        "channelSID": "CH96b05b2b5f984407902c183aae77e007",
+        "cronTime": "0 45 19 10 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": true,
-        "body": "PROTOCOL MESSAGE 3: Reminder message!! You should not have received this. Please make note to let Faizah know that you received this message. Thanks."
+        "body": "PROTOCOL MESSAGE 3: Reminder message!! You should not have received this. Please make note to let Faizah know that you received this message"
+    },
+    {
+        "cronTime": "0 0 20 10 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
+        "isReminderOrAssumption": false,
+        "body": "PROTOCOL MESSAGE 1: Purple is the best colour! (do not reply)"
+    },
+    {
+        "cronTime": "0 0 21 10 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
+        "isReminderOrAssumption": false,
+        "body": "PROTOCOL MESSAGE 2: DO NOT REPLY!!! You should receive a message at 9:45 PM EST"
+    },
+    {
+        "cronTime": "0 45 21 10 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
+        "isReminderOrAssumption": true,
+        "body": "PROTOCOL MESSAGE 3: Reminder message!!"
     }
 ]
