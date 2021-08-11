@@ -28,8 +28,8 @@ MESSAGES.map((message) => {
             to: process.env[message.phoneNumberCode], // Text this number
             from: TWILIO_PHONE_NUMBER, // From a valid Twilio number
           })
-          .then((m) => {
-            console.log(`The following message was sent to ${message.phoneNumberCode} at ${m.dateCreated
+          .then((sentMessage) => {
+            console.log(`The following message was sent to ${message.phoneNumberCode} at ${sentMessage.dateCreated
                 .toLocaleString('en-US', { 
                   weekday: 'short',
                   year: 'numeric',
@@ -43,8 +43,8 @@ MESSAGES.map((message) => {
               }:
               `
             )
-            console.log(m.body)
-            console.log(`Message SID: ${m.sid}`)
+            console.log(sentMessage.body)
+            console.log(`Message SID: ${sentMessage.sid}`)
           })
       } 
       
@@ -54,7 +54,7 @@ MESSAGES.map((message) => {
         client.conversations.conversations(message.channelSID)
           .messages
           .list({dateSent: new Date()})
-          .then(m => {
+          .then(participantReplies => {
               // Current date
               let reminderTime = new Date()
 
@@ -63,16 +63,19 @@ MESSAGES.map((message) => {
               // Current date take away PROTOCOL_REMINDER_DURATION
               reminderTime.setMinutes(protocolReminderTime)
 
+              // last rating message sent by participant
+              const ratingMessage = participantReplies[participantReplies.length - 1]
+
               // If there was no message sent, then we send a reminder. Otherwise, no reminder should be sent
-              if(m[m.length - 1].dateCreated <= reminderTime) {
+              if(ratingMessage.dateCreated <= reminderTime) {
                 client.messages
                 .create({
                   body: message.body,
                   to: process.env[message.phoneNumberCode], // Text this number
                   from: TWILIO_PHONE_NUMBER, // From a valid Twilio number
                 })
-                .then((m) => {
-                  console.log(`The following message was sent to ${message.phoneNumberCode} at ${m.dateCreated
+                .then((sentMessage) => {
+                  console.log(`The following message was sent to ${message.phoneNumberCode} at ${sentMessage.dateCreated
                       .toLocaleString('en-US', { 
                         weekday: 'short',
                         year: 'numeric',
@@ -86,9 +89,42 @@ MESSAGES.map((message) => {
                     }:
                     `
                   )
-                  console.log(m.body)
-                  console.log(`Message SID: ${m.sid}`)
+                  console.log(sentMessage.body)
+                  console.log(`Message SID: ${sentMessage.sid}`)
                 })
+              } else {
+                console.log(`
+                  Reminder/Assumption message was NOT sent to ${message.phoneNumberCode} at 
+                  ${
+                    new Date()
+                      .toLocaleString('en-US', { 
+                        weekday: 'short',
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour:'2-digit',
+                        minute:'2-digit',
+                        timezone:'EST',
+                        timeZoneName: 'short'
+                      })
+                  }
+                `)
+                console.log(`
+                  ${message.phoneNumberCode} has already responded with a rating of: ${ratingMessage.body} at
+                  ${
+                    ratingMessage.dateCreated
+                      .toLocaleString('en-US', { 
+                        weekday: 'short',
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour:'2-digit',
+                        minute:'2-digit',
+                        timezone:'EST',
+                        timeZoneName: 'short'
+                      })
+                  }
+                `)
               }
             }
           )

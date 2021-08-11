@@ -1,9 +1,16 @@
 [
     {
-        "cronTime": "0 23 12 11 7 *", 
+        "cronTime": "0 3 13 11 7 *", 
         "phoneNumberCode": "PARTICIPANT_1",
         "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": false,
-        "body": "Praesent vitae orci massa. Nulla sed auctor tellus. Sed fermentum, elit id laoreet dapibus, ex purus gravida sapien, quis varius nibh nisl non enim. Suspendisse rhoncus, tortor sed blandit egestas, nunc enim convallis metus, in scelerisque mi orci cursus magna. Nam vitae varius turpis."
+        "body": "Reply"
+    },
+    {
+        "cronTime": "0 8 13 11 7 *", 
+        "phoneNumberCode": "PARTICIPANT_1",
+        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
+        "isReminderOrAssumption": true,
+        "body": "Reminder"
     }
 ]
