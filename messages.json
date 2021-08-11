@@ -4,13 +4,6 @@
         "phoneNumberCode": "PARTICIPANT_1",
         "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": false,
-        "body": "Reply"
-    },
-    {
-        "cronTime": "0 8 13 11 7 *", 
-        "phoneNumberCode": "PARTICIPANT_1",
-        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
-        "isReminderOrAssumption": true,
-        "body": "Remin"
+        "body": "Hello"
     }
 ]
