@@ -1,6 +1,6 @@
 [
     {
-        "cronTime": "0 3 13 11 7 *", 
+        "cronTime": "0 15 17 11 7 *", 
         "phoneNumberCode": "PARTICIPANT_1",
         "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": false,
