@@ -28,7 +28,24 @@ MESSAGES.map((message) => {
             to: process.env[message.phoneNumberCode], // Text this number
             from: TWILIO_PHONE_NUMBER, // From a valid Twilio number
           })
-          .then(() => console.log('sent'))
+          .then((m) => {
+            console.log(`The following message was sent to ${message.phoneNumberCode} at ${m.dateCreated
+                .toLocaleString('en-US', { 
+                  weekday: 'short',
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                  hour:'2-digit',
+                  minute:'2-digit',
+                  timezone:'EST',
+                  timeZoneName: 'short'
+                })
+              }:
+              `
+            )
+            console.log(m.body)
+            console.log(`Message SID: ${m.sid}`)
+          })
       } 
       
       // If this is the third message in the protocol, we want to check if a rating message 
@@ -54,7 +71,24 @@ MESSAGES.map((message) => {
                   to: process.env[message.phoneNumberCode], // Text this number
                   from: TWILIO_PHONE_NUMBER, // From a valid Twilio number
                 })
-                .then(() => console.log('sent'))
+                .then((m) => {
+                  console.log(`The following message was sent to ${message.phoneNumberCode} at ${m.dateCreated
+                      .toLocaleString('en-US', { 
+                        weekday: 'short',
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour:'2-digit',
+                        minute:'2-digit',
+                        timezone:'EST',
+                        timeZoneName: 'short'
+                      })
+                    }:
+                    `
+                  )
+                  console.log(m.body)
+                  console.log(`Message SID: ${m.sid}`)
+                })
               }
             }
           )

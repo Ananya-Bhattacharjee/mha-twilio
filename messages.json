@@ -1,23 +1,9 @@
 [
     {
-        "cronTime": "0 0 10 11 7 *", 
+        "cronTime": "0 23 12 11 7 *", 
         "phoneNumberCode": "PARTICIPANT_1",
         "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
         "isReminderOrAssumption": false,
-        "body": "PROTOCOL MESSAGE 1: Purple is the best colour! (do not reply)"
-    },
-    {
-        "cronTime": "0 0 11 11 7 *", 
-        "phoneNumberCode": "PARTICIPANT_1",
-        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
-        "isReminderOrAssumption": false,
-        "body": "PROTOCOL MESSAGE 2: REPLY TO THIS MESSAGE!!! You should NOT receive a message at 3:45 PM EST"
-    },
-    {
-        "cronTime": "0 45 11 11 7 *", 
-        "phoneNumberCode": "PARTICIPANT_1",
-        "channelSID": "CH01877c25dfc04a52899ed2b4b4ce2aab",
-        "isReminderOrAssumption": true,
-        "body": "PROTOCOL MESSAGE 3: Reminder message!! You should not have received this. Please make note to let Faizah know that you received this message"
+        "body": "Praesent vitae orci massa. Nulla sed auctor tellus. Sed fermentum, elit id laoreet dapibus, ex purus gravida sapien, quis varius nibh nisl non enim. Suspendisse rhoncus, tortor sed blandit egestas, nunc enim convallis metus, in scelerisque mi orci cursus magna. Nam vitae varius turpis."
     }
 ]
