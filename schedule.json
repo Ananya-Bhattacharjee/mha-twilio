@@ -1,0 +1,21 @@
+[
+    {
+        "participantCode": "P1",
+        "messages": [
+            {
+                "messageCode": "MQ1",
+                "messageType": "Assumption 1",
+                "assumedRating": 2,
+                "date": "23/8/2021",
+                "time": "13:10"
+            },
+            {
+                "messageCode": "MA1",
+                "messageType": "Reminder",
+                "assumedRating": 2,
+                "date": "24/8/2021",
+                "time": "14:00"
+            }
+        ]
+    }
+]

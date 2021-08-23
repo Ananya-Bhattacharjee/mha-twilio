@@ -2,11 +2,17 @@ require('dotenv').config()
 var CronJob = require('cron').CronJob;
 const twilio = require('twilio')
 const express = require('express')
+const { logSentMessage, logDidNotSendReminder } = require('./log-sent-messages')
+const { generateMessagesFromSchedule } = require('./generate-messages')
 
 const app = express()
 
 const fs = require('fs')
-const MESSAGES = JSON.parse(fs.readFileSync('./messages.json', 'utf8'))
+const SCHEDULE = JSON.parse(fs.readFileSync('./schedule.json', 'utf8'))
+const MESSAGES = generateMessagesFromSchedule(SCHEDULE)
+
+// const MESSAGES = JSON.parse(fs.readFileSync('./messages.json', 'utf8'))
+
 const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER
 
 const ACCOUNT_SID = process.env.ACCOUNT_SID;
@@ -16,6 +22,9 @@ const PROTOCOL_REMINDER_DURATION = parseInt(process.env.PROTOCOL_REMINDER_DURATI
 const client = new twilio(ACCOUNT_SID, AUTH_TOKEN);
 
 MESSAGES.map((message) => {
+
+    const [name, phone, channelSID] = process.env[message.participantCode].split(',')
+
     // Create new Cron Job at specified time 
     const job = new CronJob(message.cronTime, function() {
       console.log('Starting Job')
@@ -25,33 +34,23 @@ MESSAGES.map((message) => {
         client.messages
           .create({
             body: message.body,
-            to: process.env[message.phoneNumberCode], // Text this number
+            to: phone, // Text this number
             from: TWILIO_PHONE_NUMBER, // From a valid Twilio number
           })
           .then((sentMessage) => {
-            console.log(`The following message was sent to ${message.phoneNumberCode} at ${sentMessage.dateCreated
-                .toLocaleString('en-US', { 
-                  weekday: 'short',
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric',
-                  hour:'2-digit',
-                  minute:'2-digit',
-                  timezone:'EST',
-                  timeZoneName: 'short'
-                })
-              }:
-              `
+            logSentMessage(
+              message.participantCode,
+              sentMessage.dateCreated,
+              sentMessage.body,
+              sentMessage.sid
             )
-            console.log(sentMessage.body)
-            console.log(`Message SID: ${sentMessage.sid}`)
           })
       } 
       
       // If this is the third message in the protocol, we want to check if a rating message 
       // was sent within the PROTOCOL_REMINDER_DURATION
       else {
-        client.conversations.conversations(message.channelSID)
+        client.conversations.conversations(channelSID)
           .messages
           .list({dateSent: new Date()})
           .then(participantReplies => {
@@ -71,60 +70,23 @@ MESSAGES.map((message) => {
                 client.messages
                 .create({
                   body: message.body,
-                  to: process.env[message.phoneNumberCode], // Text this number
+                  to: phone, // Text this number
                   from: TWILIO_PHONE_NUMBER, // From a valid Twilio number
                 })
                 .then((sentMessage) => {
-                  console.log(`The following message was sent to ${message.phoneNumberCode} at ${sentMessage.dateCreated
-                      .toLocaleString('en-US', { 
-                        weekday: 'short',
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                        hour:'2-digit',
-                        minute:'2-digit',
-                        timezone:'EST',
-                        timeZoneName: 'short'
-                      })
-                    }:
-                    `
+                  logSentMessage(
+                    message.participantCode, 
+                    sentMessage.dateCreated, 
+                    sentMessage.body, 
+                    sentMessage.sid
                   )
-                  console.log(sentMessage.body)
-                  console.log(`Message SID: ${sentMessage.sid}`)
                 })
               } else {
-                console.log(`
-                  Reminder/Assumption message was NOT sent to ${message.phoneNumberCode} at 
-                  ${
-                    new Date()
-                      .toLocaleString('en-US', { 
-                        weekday: 'short',
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                        hour:'2-digit',
-                        minute:'2-digit',
-                        timezone:'EST',
-                        timeZoneName: 'short'
-                      })
-                  }
-                `)
-                console.log(`
-                  ${message.phoneNumberCode} has already responded with a rating of: ${ratingMessage.body} at
-                  ${
-                    ratingMessage.dateCreated
-                      .toLocaleString('en-US', { 
-                        weekday: 'short',
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                        hour:'2-digit',
-                        minute:'2-digit',
-                        timezone:'EST',
-                        timeZoneName: 'short'
-                      })
-                  }
-                `)
+                logDidNotSendReminder(
+                  message.participantCode, 
+                  ratingMessage.body, 
+                  ratingMessage.dateCreated
+                )
               }
             }
           )
