@@ -3,12 +3,13 @@ const accountSid = process.env.ACCOUNT_SID;
 const authToken = process.env.AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
-const NAME = ""               // Add your name here
-const PHONE = ""              // Add your phone number here
+const NAME = "Tina"               // Add your name here
+const PHONE = "+818078153258"              // Add your phone number here
 
 client.conversations.conversations
     .create({friendlyName: `Conversations with ${NAME}`})
     .then(conversation => {
+        console.log({consversationSid: conversation.sid})
         client.conversations.conversations(conversation.sid)
             .participants
             .create({
