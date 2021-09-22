@@ -66,7 +66,8 @@ MESSAGES.map((message) => {
               const ratingMessage = participantReplies[participantReplies.length - 1]
 
               // If there was no message sent, then we send a reminder. Otherwise, no reminder should be sent
-              if(ratingMessage.dateCreated <= reminderTime) {
+              // Note that participantRepies may be empty, which results in ratingMessage == undefined so condition on line 70 is not satisfied (no text will be sent)
+              if(ratingMessage.dateCreated <= reminderTime || participantReplies.length == 0) {
                 client.messages
                 .create({
                   body: message.body,
