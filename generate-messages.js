@@ -18,15 +18,15 @@ const reminder = (name) => {
 }
 
 const assumption1 = (name, rating) => {
-    return `Hello, ${name}! We noticed you didn’t get around to replying to our previous prompt yet, which is completely fine. However, if you are unable to respond today, we will make an assumption about your rating to save time and reduce your burden. We will assume you rate today’s message a ${rating}. Many technologies make these assumptions randomly. If we're wrong, please let us know so we can give you and others the most useful possible messages.`
+    return `Hello, ${name}! We noticed you didn’t get around to replying to our previous prompt yet, which is completely fine. However, if you are unable to respond today, we will make an assumption about your rating to save time and reduce your burden. WE WILL ASSUME YOU RATE TODAY'S MESSAGE A ${rating}. Many technologies make these assumptions randomly. If we're wrong, please let us know so we can give you and others the most useful possible messages.`
 }
 
 const assumption2 = (name, rating) => {
-    return `Hello, ${name}! We noticed you didn’t get around to replying to our previous prompt yet, which is completely fine. However, if you are unable to respond today, we will make an assumption about your rating to save time and reduce your burden. We will assume you rate today’s message a ${rating}. Many technologies make these assumptions from a particular user’s past interaction with the technology. If we're wrong, please let us know so we can give you and others the most useful possible messages. `
+    return `Hello, ${name}! We noticed you didn’t get around to replying to our previous prompt yet, which is completely fine. However, if you are unable to respond today, we will make an assumption about your rating to save time and reduce your burden. WE WILL ASSUME YOU RATE TODAY'S MESSAGE A ${rating}. Many technologies make these assumptions from a particular user’s past interaction with the technology. If we're wrong, please let us know so we can give you and others the most useful possible messages. `
 }
 
 const assumption3 = (name, rating) => {
-    return `Hello, ${name}! We noticed you didn’t get around to replying to our previous prompt yet, which is completely fine. However, if you are unable to respond today, we will make an assumption about your rating to save time and reduce your burden. We will assume you rate today’s message a ${rating}. Many technologies make these assumptions from other users’ interactions with the technology. If we're wrong, please let us know so we can give you and others the most useful possible messages.`
+    return `Hello, ${name}! We noticed you didn’t get around to replying to our previous prompt yet, which is completely fine. However, if you are unable to respond today, we will make an assumption about your rating to save time and reduce your burden. WE WILL ASSUME YOU RATE TODAY'S MESSAGE A ${rating}. Many technologies make these assumptions from other users’ interactions with the technology. If we're wrong, please let us know so we can give you and others the most useful possible messages.`
 }
 
 const getCronTimes = (message) => {
@@ -38,12 +38,12 @@ const getCronTimes = (message) => {
     const [day, month] = message.date.split('/').map(item => parseInt(item))
 
     const cronTime1 = `0 ${firstMessageMinutes} ${firstMessageHours} ${day} ${month - 1} *`
-    const cronTime2 = `0 ${firstMessageMinutes} ${firstMessageHours + 1} ${day} ${month - 1} *`
+    const cronTime2 = firstMessageHours + 1 >= 24 ? `0 ${firstMessageMinutes} ${firstMessageHours + 1 - 24} ${day+1} ${month - 1} *`: `0 ${firstMessageMinutes} ${firstMessageHours + 1} ${day} ${month - 1} *`
 
     const additionalHours = Math.floor((firstMessageMinutes + PROTOCOL_REMINDER_DURATION) / 60)
     const newMinutes = (firstMessageMinutes + PROTOCOL_REMINDER_DURATION) % 60
 
-    const cronTime3 = `0 ${newMinutes} ${firstMessageHours + 1 + additionalHours} ${day} ${month - 1} *`
+    const cronTime3 = firstMessageHours + 1 + additionalHours >= 24 ? `0 ${newMinutes} ${firstMessageHours + additionalHours + 1 - 24} ${day + 1} ${month - 1} *`: `0 ${newMinutes} ${firstMessageHours + 1 + additionalHours} ${day} ${month - 1} *`
 
     return {first: cronTime1, second: cronTime2, third: cronTime3}
 }
