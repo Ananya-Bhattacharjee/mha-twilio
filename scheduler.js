@@ -11,8 +11,6 @@ const fs = require('fs')
 const SCHEDULE = JSON.parse(fs.readFileSync('./schedule.json', 'utf8'))
 const MESSAGES = generateMessagesFromSchedule(SCHEDULE)
 
-// const MESSAGES = JSON.parse(fs.readFileSync('./messages.json', 'utf8'))
-
 const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER
 
 const ACCOUNT_SID = process.env.ACCOUNT_SID;
@@ -26,6 +24,8 @@ MESSAGES.map((message) => {
     const [name, phone, channelSID] = process.env[message.participantCode].split(',')
 
     // Create new Cron Job at specified time 
+    console.log(name);
+    console.log(message.cronTime)
     const job = new CronJob(message.cronTime, function() {
       console.log('Starting Job')
       // If this is the first or second message in the protocol (not the reminder or assumption)
@@ -67,7 +67,7 @@ MESSAGES.map((message) => {
 
               // If there was no message sent, then we send a reminder. Otherwise, no reminder should be sent
               // Note that participantRepies may be empty, which results in ratingMessage == undefined so condition on line 70 is not satisfied (no text will be sent)
-              if(ratingMessage.dateCreated <= reminderTime || participantReplies.length == 0) {
+              if(participantReplies.length === 0 || ratingMessage.dateCreated <= reminderTime) {
                 client.messages
                 .create({
                   body: message.body,
@@ -99,5 +99,5 @@ MESSAGES.map((message) => {
 })
 
 // Start server
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 10924
 app.listen(PORT, console.log(`Server running on port ${PORT}`))
