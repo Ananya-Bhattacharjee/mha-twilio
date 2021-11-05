@@ -75,7 +75,6 @@ for (participant of participants) {
                 client.conversations.conversations
                     .create({ friendlyName: `With ${name} created at: ${yourDate}` })
                     .then(conversation => {
-                        console.log(conversation)
                         client.conversations.conversations(conversation.sid)
                             .participants
                             .create({
